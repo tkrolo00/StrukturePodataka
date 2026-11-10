@@ -107,7 +107,8 @@ int izracunaj_postfiks(stack *head, const char *ime_datoteke, float *rezultat) {
     }
     fclose(file);
 
-    char *token = strtok_s(buffer, sizeof(token), " \t\n");
+    char *next_token = NULL;
+    char *token      = strtok_s(buffer, " \t\n", &next_token);
     float element;
     float clan1;
     float clan2;
@@ -131,7 +132,7 @@ int izracunaj_postfiks(stack *head, const char *ime_datoteke, float *rezultat) {
             }
             push(head, racun);
         }
-        token = strtok_s(NULL, sizeof(token), " \t\n");
+        token = strtok_s(NULL, " \t\n", &next_token);
     }
 
     float glavni_racun;
